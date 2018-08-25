@@ -11,11 +11,17 @@
 |
 */
 Route::get('/','HomeController@index');
+Route::get('/admin','Admin\MainController@index');
 
 Route::resources([
     '/admin/categories' => 'Admin\CategoriesController',
-    '/admin/videos' => 'Admin\VideosController'
+    '/admin/videos' => 'Admin\VideosController',
+    '/admin/actors' =>'Admin\ActorsController'
 ]);
+Route::get('/admin/categories/{category}/delete', 'Admin\CategoriesController@delete');
+Route::get('/admin/videos/{video}/delete', 'Admin\VideosController@delete');
+Route::get('/admin/actors/{actor}/delete', 'Admin\ActorsController@delete');
+
 
 Route::get('upload',['as' => 'upload_form', 'uses' => 'UploadController@getForm']);
 Route::post('upload',['as' => 'upload_file','uses' => 'UploadController@upload']);

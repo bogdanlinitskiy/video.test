@@ -19,6 +19,9 @@
                 <a class="nav-link" href="/admin">Админка</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/admin/categories">Categories</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link disabled" href="/admin/videos">видосы</a>
             </li>
             <li class="nav-item dropdown">
@@ -31,7 +34,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link disabled" href="/">Актеры</a>
+                <a class="nav-link disabled" href="/admin/actors">Актеры</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="/">Войти</a>

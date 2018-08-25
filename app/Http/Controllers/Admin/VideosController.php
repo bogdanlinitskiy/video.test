@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Category;
 use App\Video;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class VideosController extends Controller
 {
@@ -23,32 +25,34 @@ class VideosController extends Controller
 
     public function create()
     {
-        return view('videos.create');
+        $categories = Category::all();
+        return view('videos.create',compact('categories'));
     }
 
     public function store()
     {
+
+
         $this->validate(request(),[
             'name' => 'required|unique:videos,name',
             'alias' => 'required|unique:videos,alias',
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'required',
+            'video' => 'required'
         ]);
-
         foreach (request()->files->get('image') as $file){
             foreach (request()->files->get('video') as $vid) {
                 $vid = $vid->move(public_path() . '/videos/', time() . '_' . $vid->getClientOriginalName());
-                $file = $file->move(public_path() . '/images/', time() . '_' . $file->getClientOriginalName());
+                $file = $file->move(public_path() . '/images/videos', time() . '_' . $file->getClientOriginalName());
                 $video = new Video;
                 $video->name = request('name');
                 $video->alias = request('alias');
                 $video->image = basename($file->getRealPath());
                 $video->video = basename($vid->getRealPath());
                 $video->description = request('description');
-                $video->views = 0;
-                $video->likes = 0;
-                $video->dislikes = 0;
                 $video->date = Carbon::now();
                 $video->save();
+                $video->attachingID($video);
             }
         }
         return redirect('/admin/videos');
@@ -56,32 +60,40 @@ class VideosController extends Controller
 
     public function edit(Video $video)
     {
-        return view('videos.edit',compact('video'));
+        $categories = Category::all();
+        return view('videos.edit',compact('video','categories'));
     }
 
     public function update(Video $video)
     {
-        if(request()->files->get('image') != NULL){
-            foreach (request()->files->get('image') as $file){
-                foreach (request()->files->get('video') as $vid) {
-                    $vid = $vid->move(public_path() . '/videos/', time() . '_' . $vid->getClientOriginalName());
-                    $file = $file->move(public_path() . '/images/', time() . '_' . $file->getClientOriginalName());
-                    $video->update([
-                        'name' => request('name'),
-                        'alias' => request('alias'),
-                        'description' => request('description'),
-                        $video->image = basename($file->getRealPath()),
-                        $video->video = basename($vid->getRealPath())
-                    ]);
-                }
-            }
-        }elseif (request()->files->get('image') == NULL) {
-            $video->update([
-            'name' => request('name'),
-            'alias' => request('alias'),
-            'description' => request('description')
+        $this->validate(request(),[
+            'name' => 'required|unique:videos,name,' . $video->id,
+            'alias' => 'required|unique:videos,alias,' . $video->id,
+            'description' => 'required'
         ]);
+
+        if(request()->file('image')!=NULL){
+            $image = Video::find($video->id);
+            $dir = 'images/videos/';
+            if ($image->image != '' && File::exists($dir . $image->image))
+                File::delete($dir . $image->image);
+            foreach (request()->files->get('image') as $file) {
+                $file = $file->move(public_path() . '/images/videos/', time() . '_' . $file->getClientOriginalName());
+                $video->update([
+                    'name' => request('name'),
+                    'alias' => request('alias'),
+                    'image' => basename($file->getRealPath())
+                ]);
+                $video->attachingID($video);
+            }
+        }elseif(request()->file('image')==NULL){
+            $video->update([
+                'name' => request('name'),
+                'alias' => request('alias')
+            ]);
+            $video->attachingID($video);
         }
+
         return redirect('/admin/videos');
     }
 

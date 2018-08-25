@@ -32,6 +32,13 @@
                 <input type ="text" class="form-control" id="description" name="description">
             </div>
 
+            @foreach($categories as $category)
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="{{$category['id']}}" name="{{$category['id']}}">
+                    <label class="custom-control-label" for="{{$category['id']}}">{{$category['name']}}</label>
+                </div>
+            @endforeach
+
             <div class="form-group">
                 <button class="btn btn-default">Save</button>
                 <p><a class="btn btn-primary" href="/admin" role="button">Back to the home page</a></p>
