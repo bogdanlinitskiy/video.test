@@ -24,6 +24,17 @@ class Video extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function addView($id)
+    {
+        $video = Video::find($id);
+        if($video['views'] == NULL){
+            $video->update(['views' => 1 ]);
+        }else{
+            $video->update(['views' => $video['views']+1 ]);
+    }
+
+    }
+
     public function attachingID($video)
     {
         $lastActor = Actor::latest()->limit(1)->get();
