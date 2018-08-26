@@ -11,7 +11,7 @@
     @foreach($last_added['categories'] as $category)
         <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="/images/categories/{{$category['image']}}" alt="Card image cap" height="250px">
+                <img class="card-img-top" src="/images/categories/{{$category['image']}}" height="200px" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-text">{{ $category['name'] }}</h2>
                     <div class="d-flex justify-content-between align-items-center">
@@ -52,7 +52,7 @@
     @endforeach
 
     <div class="div-create col-md-12 text-center">
-        <h1>Last added videos</h1>
+        <h1>Last added actors</h1>
         <a href="/admin/actors/create">
             <button type="button" class="create btn btn-sm btn-outline-secondary"> Add actor</button>
         </a>

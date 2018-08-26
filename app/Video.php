@@ -26,6 +26,16 @@ class Video extends Model
 
     public function attachingID($video)
     {
+        $lastActor = Actor::latest()->limit(1)->get();
+        foreach ($lastActor as $actor) {
+            for ($i = 1; $i <= $actor['id']; $i++) {
+                if (request("act_".$i) == "on") {
+                    $video->actors()->attach($i);
+                }elseif(request("act_".$i) == !"on"){
+                    $video->actors()->detach($i);
+                }
+            }
+        }
         $lastCategory = Category::latest()->limit(1)->get();
         foreach ($lastCategory as $category) {
             for ($i = 1; $i <= $category['id']; $i++) {

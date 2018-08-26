@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Actor;
 use App\Category;
 use App\Video;
 use Carbon\Carbon;
@@ -26,13 +27,12 @@ class VideosController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('videos.create',compact('categories'));
+        $actors = Actor::all();
+        return view('videos.create',compact('categories','actors'));
     }
 
     public function store()
     {
-
-
         $this->validate(request(),[
             'name' => 'required|unique:videos,name',
             'alias' => 'required|unique:videos,alias',

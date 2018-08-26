@@ -20,9 +20,9 @@ class CreateVideosTable extends Migration
             $table->string('image');
             $table->string('video');
             $table->text('description');
-            $table->integer('views')->nullable();
-            $table->integer('likes')->nullable();
-            $table->integer('dislikes')->nullable();
+            $table->integer('views')->default('0');
+            $table->integer('likes')->default('0');
+            $table->integer('dislikes')->default('0');
             $table->date('date');
             $table->timestamps();
         });
