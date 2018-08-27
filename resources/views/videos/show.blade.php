@@ -9,7 +9,7 @@
                 <p class="card-text">Name: {{$video['name']}}</p>
                 <p class="card-text">Alias: {{$video['alias']}}</p>
                 <p class="card-text">Description: {{$video['description']}}</p>
-                <p class="card-text">Date: {{$video['date']}}</p>
+                <p class="card-text">Added: {{$video->time_ago(($video['date']))}} ago ({{$video['date']}})</p>
                 <p class="card-text">Views: {{$video['views']}}</p>
                 <p class="card-text">Likes: {{$video['likes']}}</p>
                 <p class="card-text">Dislikes: {{$video['dislikes']}}</p>

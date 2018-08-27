@@ -73,7 +73,7 @@
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
                             </a>
                         </div>
-                        <small class="text-muted">9 mins</small>
+                        <small class="text-muted">{{$video->time_ago(($video['date']))}} ago</small>
                     </div>
                 </div>
             </div>

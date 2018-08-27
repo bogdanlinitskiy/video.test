@@ -111,13 +111,13 @@ class VideosController extends Controller
 
     public function popular()
     {
-        $videos = DB::table('videos')->orderBy('views','desc')->get();
+        $videos = Video::orderBy('views','desc')->paginate(9);
         return view('popular',compact('videos'));
     }
 
     public function newVideos()
     {
-        $videos = Video::latest()->get();
+        $videos = Video::latest()->paginate(9);
         return view('newVideos',compact('videos'));
     }
 }

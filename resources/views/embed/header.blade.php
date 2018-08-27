@@ -10,10 +10,10 @@
                 <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="/new">New videos</a>
+                <a class="nav-link" href="/new">New videos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="/popular">Popular</a>
+                <a class="nav-link" href="/popular">Popular</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin">Admin panel</a>
