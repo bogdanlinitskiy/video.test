@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Video;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $videos = Video::latest()->paginate(6);
+        return view('home',compact('videos'));
     }
+
+
 }

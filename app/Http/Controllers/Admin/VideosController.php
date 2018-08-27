@@ -9,6 +9,7 @@ use App\Video;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class VideosController extends Controller
@@ -106,5 +107,17 @@ class VideosController extends Controller
     {
         $video->delete();
         return redirect('/admin/videos');
+    }
+
+    public function popular()
+    {
+        $videos = DB::table('videos')->orderBy('views','desc')->get();
+        return view('popular',compact('videos'));
+    }
+
+    public function newVideos()
+    {
+        $videos = Video::latest()->get();
+        return view('newVideos',compact('videos'));
     }
 }

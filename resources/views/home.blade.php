@@ -53,23 +53,32 @@
 @endsection
 
 @section('content')
-
-@for($i=1;$i<10;$i++)
-<div class="col-md-4">
-    <div class="card mb-4 shadow-sm">
-        <img class="card-img-top" src="/videos/1534554322_20130502_120944.jpg" alt="Card image cap">
-        <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+    @foreach($videos as $video)
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <a href="/admin/videos/{{$video['alias']}}">
+                    <img class="card-img-top" src="/images/videos/{{$video['image']}}" height="200px" alt="Card image cap">
+                </a>
+                <div class="card-body">
+                    <p class="card-text">{{$video['name']}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a href="/admin/videos/{{$video['alias']}}">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            </a>
+                            <a href="/admin/videos/{{$video['alias']}}/edit">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </a>
+                            <a href="/admin/videos/{{$video['alias']}}/delete">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                            </a>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
                 </div>
-                <small class="text-muted">9 mins</small>
             </div>
         </div>
-    </div>
-</div>
-@endfor
+    @endforeach
+    <div style="margin: 0 auto;">{{ $videos->links() }}</div>
 
 @endsection

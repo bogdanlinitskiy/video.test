@@ -33,8 +33,10 @@
             marker = false;
         }
         var v = document.getElementsByTagName("video")[0];
-        v.addEventListener("ended", function() {
-            if(marker){count();}
+        v.addEventListener("play", function() {
+            if(marker){
+                count();
+            }
         }, true);
     </script>
 @endsection

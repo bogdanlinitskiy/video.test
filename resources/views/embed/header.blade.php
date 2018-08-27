@@ -10,19 +10,19 @@
                 <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">Новинки</a>
+                <a class="nav-link disabled" href="/new">New videos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="/">Топ</a>
+                <a class="nav-link disabled" href="/popular">Popular</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Админка</a>
+                <a class="nav-link" href="/admin">Admin panel</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/categories">Categories</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="/admin/videos">видосы</a>
+                <a class="nav-link" href="/admin/videos">Videos</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
@@ -34,10 +34,10 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link disabled" href="/admin/actors">Актеры</a>
+                <a class="nav-link disabled" href="/admin/actors">Actors</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="/">Войти</a>
+                <a class="nav-link disabled" href="/">Enter</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
