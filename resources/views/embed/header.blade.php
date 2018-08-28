@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/new">New videos</a>
@@ -16,29 +16,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="/popular">Popular</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin panel</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/categories">Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/videos">Videos</a>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="/admin/videos">Videos</a>--}}
+            {{--</li>--}}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                     @foreach(\App\Category::all() as $category)
-                    <a class="dropdown-item" href='{{url("/admin/categories/$category[alias]")}}'>{{$category['name']}}</a>
+                    <a class="dropdown-item" href='{{url("/categories/$category[alias]")}}'>{{$category['name']}}</a>
                     @endforeach
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link disabled" href="/admin/actors">Actors</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="/">Enter</a>
+                <a class="nav-link disabled" href="/actors">Actors</a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-right">
@@ -50,13 +41,13 @@
                             <a class="dropdown-item" href="/favorite">Favorite videos</a>
                             <a class="dropdown-item" href="/likes">Likes</a>
                             <hr>
-                            <a class="dropdown-item" href="/logout">Выйти</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
                         </div>
                     </div>
                 </li>
             @else
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" ><b>Вход</b> <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" ><b>Login</b> <span class="caret"></span></a>
                     <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
                         <li>
                             <div class="row">
@@ -68,22 +59,22 @@
                                             <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                         </div>
                                         <div class="form-group">
-                                            <label class="sr-only" for="password">Пароль</label>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
-                                            <div class="help-block text-right"><a href="">Забыли пароль ?</a></div>
+                                            <label class="sr-only" for="password">Password </label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                            <div class="help-block text-right"><a href="">Forgot password ?</a></div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Login </button>
                                         </div>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox"> оставаться в сети
+                                                <input type="checkbox"> stay online
                                             </label>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="bottom text-center">
-                                    В первый раз на данном сайте ? <a href="/registration"><b>Регистрация</b></a>
+                                    First time on this site ? <a href="/registration"><b>Registration</b></a>
                                 </div>
                             </div>
                         </li>

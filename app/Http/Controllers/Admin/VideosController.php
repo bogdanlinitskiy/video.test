@@ -14,22 +14,27 @@ use Illuminate\Support\Facades\File;
 
 class VideosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Admin');
+    }
+
     public function index()
     {
         $videos = Video::all();
-        return view('admin.index_pages.videos',compact('videos'));
+        return view('admin.videos.index',compact('videos'));
     }
 
     public function show(Video $video)
     {
-        return view('videos.show',compact('video'));
+        return view('admin.videos.show',compact('video'));
     }
 
     public function create()
     {
         $categories = Category::all();
         $actors = Actor::all();
-        return view('videos.create',compact('categories','actors'));
+        return view('admin.videos.create',compact('categories','actors'));
     }
 
     public function store()
@@ -62,7 +67,7 @@ class VideosController extends Controller
     public function edit(Video $video)
     {
         $categories = Category::all();
-        return view('videos.edit',compact('video','categories'));
+        return view('admin.videos.edit',compact('video','categories'));
     }
 
     public function update(Video $video)
@@ -100,7 +105,7 @@ class VideosController extends Controller
 
     public function delete(Video $video)
     {
-        return view('videos.delete',compact('video'));
+        return view('admin.videos.delete',compact('video'));
     }
 
     public function destroy(Video $video)
@@ -109,15 +114,15 @@ class VideosController extends Controller
         return redirect('/admin/videos');
     }
 
-    public function popular()
-    {
-        $videos = Video::orderBy('views','desc')->paginate(9);
-        return view('popular',compact('videos'));
-    }
-
-    public function newVideos()
-    {
-        $videos = Video::latest()->paginate(9);
-        return view('newVideos',compact('videos'));
-    }
+//    public function popular()
+//    {
+//        $videos = Video::orderBy('views','desc')->paginate(9);
+//        return view('popular',compact('videos'));
+//    }
+//
+//    public function newVideos()
+//    {
+//        $videos = Video::latest()->paginate(9);
+//        return view('newVideos',compact('videos'));
+//    }
 }

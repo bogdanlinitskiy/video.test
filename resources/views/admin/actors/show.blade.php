@@ -1,4 +1,4 @@
-@extends('template')
+@extends('admin.template')
 
 
 @section('content')
@@ -12,6 +12,10 @@
                 <p class="card-text">Birth date: {{$actor['birth_date']}} (Age {{$age}})</p>
                 <p class="card-text">Height: {{$actor['height']}}</p>
                 <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/admin/actors/{{$actor['alias']}}/edit">Edit</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/admin/actors/{{$actor['alias']}}/delete">Delete</a></button>
+                    </div>
                     {{--<small class="text-muted">9 mins</small>--}}
                 </div>
             </div>

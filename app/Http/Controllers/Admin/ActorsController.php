@@ -9,20 +9,20 @@ use Illuminate\Support\Facades\File;
 
 class ActorsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('Admin');
+    }
+
     public function index()
     {
         $actors = Actor::all();
-        return view('admin.index_pages.actors',compact('actors'));
+        return view('admin.actors.index',compact('actors'));
     }
 
     public function create()
     {
-        return view('actors.create');
+        return view('admin.actors.create');
     }
 
     public function store(Actor $actor)
@@ -58,12 +58,12 @@ class ActorsController extends Controller
     public function show(Actor $actor)
     {
         $age = date_diff(date_create($actor['birth_date']), date_create('today'))->y;
-        return view('actors.show',compact('actor','age'));
+        return view('admin.actors.show',compact('actor','age'));
     }
 
     public function edit(Actor $actor)
     {
-        return view('actors.edit',compact('actor'));
+        return view('admin.actors.edit',compact('actor'));
     }
 
     public function update(Actor $actor)
@@ -112,7 +112,7 @@ class ActorsController extends Controller
 
     public function delete(Actor $actor)
     {
-        return view('actors.delete',compact('actor'));
+        return view('admin.actors.delete',compact('actor'));
     }
 
     public function destroy(Actor $actor)

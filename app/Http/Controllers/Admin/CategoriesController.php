@@ -11,20 +11,25 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Admin');
+    }
+
     public function index()
     {
         $categories = Category::all();
-        return view('admin.index_pages.categories',compact('categories'));
+        return view('admin.categories.index',compact('categories'));
     }
 
     public function show(Category $category)
     {
-        return view('categories.show',compact('category'));
+        return view('admin.categories.show',compact('category'));
     }
 
     public function create()
     {
-        return view('categories.create');
+        return view('admin.categories.create');
     }
 
     public function store()
@@ -47,7 +52,7 @@ class CategoriesController extends Controller
 
     public function edit(Category $category)
     {
-        return view('categories.edit',compact('category'));
+        return view('admin.categories.edit',compact('category'));
     }
 
     public function update(Category $category)
@@ -80,7 +85,7 @@ class CategoriesController extends Controller
 
     public function delete(Category $category)
     {
-        return view('categories.delete',compact('category'));
+        return view('admin.categories.delete',compact('category'));
     }
 
     public function destroy(Category $category)

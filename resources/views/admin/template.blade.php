@@ -11,7 +11,7 @@
 <body>
 
 
-@include('embed.admin_header')
+@include('admin.header')
 
 <main role="main">
     @yield('jumbotron')

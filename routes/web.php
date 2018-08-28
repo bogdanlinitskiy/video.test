@@ -25,12 +25,15 @@ Route::get('/admin/categories/{category}/delete', 'Admin\CategoriesController@de
 Route::get('/admin/videos/{video}/delete', 'Admin\VideosController@delete');
 Route::get('/admin/actors/{actor}/delete', 'Admin\ActorsController@delete');
 
-Route::get('/popular','Admin\VideosController@popular');
-Route::get('/new','Admin\VideosController@newVideos');
+//Route::get('/categories','CategoriesController@index');
+Route::get('/categories/{category}','CategoriesController@show');
+//Route::get('/videos','VideosController@index');
+Route::get('/videos/{video}','VideosController@show');
+Route::get('/actors','ActorsController@index');
+Route::get('/actors/{actor}','ActorsController@show');
 
-
-Route::get('upload',['as' => 'upload_form', 'uses' => 'UploadController@getForm']);
-Route::post('upload',['as' => 'upload_file','uses' => 'UploadController@upload']);
+Route::get('/popular','VideosController@popular');
+Route::get('/new','VideosController@newVideos');
 
 //Users register and login routes
 Route::get('/login','LoginController@create')->name('login');

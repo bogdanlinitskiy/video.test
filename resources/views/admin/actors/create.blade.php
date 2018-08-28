@@ -1,4 +1,4 @@
-@extends('template')
+@extends('admin.template')
 
 @section('content')
     <div class="col-md-12">
