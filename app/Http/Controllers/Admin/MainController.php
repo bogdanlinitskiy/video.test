@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('Admin');
+    }
+
     public function index()
     {
         $data['last_added']['videos'] = Video::latest()->limit(3)->get();

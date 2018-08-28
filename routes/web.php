@@ -31,3 +31,16 @@ Route::get('/new','Admin\VideosController@newVideos');
 
 Route::get('upload',['as' => 'upload_form', 'uses' => 'UploadController@getForm']);
 Route::post('upload',['as' => 'upload_file','uses' => 'UploadController@upload']);
+
+//Users register and login routes
+Route::get('/login','LoginController@create')->name('login');
+Route::post('/login','LoginController@store');
+Route::get('/logout','LoginController@destroy');
+Route::get('/registration','RegistrationController@create');
+Route::post('/registration','RegistrationController@store');
+
+//Admin login routes
+Route::get('/admin','Admin\MainController@index');
+Route::get('/admin/login',['as' => 'admin.login','uses' => 'Admin\LoginController@showLoginForm']);
+Route::post('/admin/login',['uses' => 'Admin\LoginController@login']);
+Route::get('/admin/logout',['as' => 'admin.logout','uses' => 'Admin\LoginController@logout']);

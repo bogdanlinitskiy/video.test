@@ -1,4 +1,4 @@
-@extends('template')
+@extends(Auth::guard('admin')->user() ? 'admin.template' : 'template')
 
 @section('content')
     <div class="div-create col-md-12 text-center">

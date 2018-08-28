@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/login_drop.css">
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,9 +28,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    @foreach(\App\Category::all() as $category)
+                    <a class="dropdown-item" href='{{url("/admin/categories/$category[alias]")}}'>{{$category['name']}}</a>
+                    @endforeach
                 </div>
             </li>
 
@@ -40,9 +41,64 @@
                 <a class="nav-link disabled" href="/">Enter</a>
             </li>
         </ul>
+        <ul class="navbar-nav navbar-right">
+            @if(Auth::check())
+                <li class="nav-item">
+                    <div class="dropdown ">
+                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><b>{{Auth::user()->name}}</b><span class="caret"></span></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/favorite">Favorite videos</a>
+                            <a class="dropdown-item" href="/likes">Likes</a>
+                            <hr>
+                            <a class="dropdown-item" href="/logout">Выйти</a>
+                        </div>
+                    </div>
+                </li>
+            @else
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" ><b>Вход</b> <span class="caret"></span></a>
+                    <ul id="login-dp" class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form class="form" role="form" method="post" action="/login" accept-charset="UTF-8" id="login-nav">
+                                        {{csrf_field()}}
+                                        <div class="form-group">
+                                            <label class="sr-only" for="email">Email </label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="password">Пароль</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
+                                            <div class="help-block text-right"><a href="">Забыли пароль ?</a></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> оставаться в сети
+                                            </label>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="bottom text-center">
+                                    В первый раз на данном сайте ? <a href="/registration"><b>Регистрация</b></a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+        </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
+<style>
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+</style>
