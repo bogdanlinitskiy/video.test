@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Laravel\Scout\Searchable;
 
 class Video extends Model
 {
+    use Searchable;
+
     protected $fillable =['name','alias','image','description','views','likes','dislikes','date'];
 
     public function getRouteKeyName()

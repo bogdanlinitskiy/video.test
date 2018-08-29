@@ -2,6 +2,7 @@
 
 
 @section('carousel')
+
     <link rel="stylesheet" href="/css/carousel.css">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -11,32 +12,32 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                {{--<img class="first-slide" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrUU3zoQaiyOZ2bwG-Rx-Cz-HEnvDXz0ShITNn_rcHcpMCcwg_Jw" alt="First slide">--}}
+                <img class="first-slide" src="/images/videos/{{$popular[0]['image']}}" alt="First slide">
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>Быстрая регистрация</h1>
-                        <p>Вам необходимо всего 1 минута для регистрации</p>
-                        <p><a class="btn btn-lg btn-primary" href="/register" role="button">Зарегестрироваться</a></p>
+                        <h1>{{$popular[0]['name']}}</h1>
+                        <p>{{$popular[0]['description']}}</p>
+                        <p><a class="btn btn-lg btn-primary" href="/videos/{{$popular[0]['alias']}}" role="button">Watch</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                {{--<img class="second-slide" src="https://pm1.narvii.com/6180/d1be167e8a81faab245de2d88cc338908a67654b_hq.jpg" alt="Second slide">--}}
+                <img class="second-slide" src="/images/videos/{{$popular[1]['image']}}" alt="Second slide">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Создайте свою анкету</h1>
-                        <p>Создать и заполнить анкету не составит труда</p>
-                        <p><a class="btn btn-lg btn-primary" href="/seller_profile" role="button">Создать анкету</a></p>
+                        <h1>{{$popular[1]['name']}}</h1>
+                        <p>{{$popular[1]['description']}}</p>
+                        <p><a class="btn btn-lg btn-primary" href="/videos/{{$popular[1]['alias']}}" role="button">Watch</a></p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                {{--<img class="third-slide" src="http://anime-zone.ru/inc/manga/berserk/25/01/berserk-v25c207p030-31rus.jpg" alt="Third slide">--}}
+                <img class="third-slide" src="/images/videos/{{$popular[2]['image']}}" alt="Third slide">
                 <div class="container">
                     <div class="carousel-caption text-right">
-                        <h1>Заказ услуги</h1>
-                        <p>Хотите заказать услугу? Воспользуйтесь одной из категорий</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                        <h1>{{$popular[2]['name']}}</h1>
+                        <p>{{$popular[2]['description']}}</p>
+                        <p><a class="btn btn-lg btn-primary" href="/videos/{{$popular[2]['alias']}}" role="button">Watch</a></p>
                     </div>
                 </div>
             </div>

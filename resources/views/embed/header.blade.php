@@ -31,6 +31,9 @@
             <li class="nav-item">
                 <a class="nav-link disabled" href="/actors">Actors</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="/search">Search</a>
+            </li>
         </ul>
         <ul class="navbar-nav navbar-right">
             @if(Auth::check())
