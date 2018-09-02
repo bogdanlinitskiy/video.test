@@ -56,7 +56,7 @@
 @section('content')
     @foreach($videos as $video)
         <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4 badge-dark">
                 <a href="/videos/{{$video['alias']}}">
                     <img class="card-img-top" src="/images/videos/{{$video['image']}}" height="200px" alt="Card image cap">
                 </a>

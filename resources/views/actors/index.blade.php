@@ -3,7 +3,7 @@
 @section('content')
     @foreach($actors as $actor)
         <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4 shadow-sm badge-dark">
                 <a href="/actors/{{$actor['alias']}}">
                     <img class="card-img-top" src="/images/actors/{{$actor['image']}}" height="200px" alt="Card image cap">
                 </a>
@@ -25,7 +25,7 @@
 
 @section('jumbotron')
 
-    <div class="jumbotron" align="center">
+    <div class="jumbotron" align="center" style="background-color:transparent !important;">
         <div class="container">
             <h1>Actors</h1>
         </div>

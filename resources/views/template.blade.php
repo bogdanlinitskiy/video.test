@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body class="bg-dark">
 <style>
     a{
         text-decoration: none !important;
@@ -19,11 +19,11 @@
     }
 </style>
 @include('embed.header')
-<main role="main">
+<main role="main" class="bg-dark">
 
     @yield('jumbotron')
     @yield('carousel')
-    <div class="album py-5 bg-light">
+    <div class="album py-5">
         <div class="container">
             <div class="row">
                 @yield('content')
@@ -32,7 +32,7 @@
     </div>
     @yield('advice')
 </main>
-@include('embed.footer')
+    @include('embed.footer')
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
