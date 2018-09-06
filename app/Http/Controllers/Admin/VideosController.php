@@ -67,11 +67,13 @@ class VideosController extends Controller
     public function edit(Video $video)
     {
         $categories = Category::all();
-        return view('admin.videos.edit',compact('video','categories'));
+        $actors = Actor::all();
+        return view('admin.videos.edit',compact('video','categories','actors'));
     }
 
     public function update(Video $video)
     {
+//        dd(\request()->all());
         $this->validate(request(),[
             'name' => 'required|unique:videos,name,' . $video->id,
             'alias' => 'required|unique:videos,alias,' . $video->id,

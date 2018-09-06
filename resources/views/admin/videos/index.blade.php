@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="div-create col-md-12 text-center">
-        <a href="/admin/categories/create">
+        <a href="/admin/videos/create">
             <button type="button" class="create btn btn-sm btn-outline-secondary"> Add new video</button>
         </a>
         <hr>

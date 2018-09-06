@@ -34,7 +34,7 @@
 @section('jumbotron')
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4">Create new video</h1>
+            <h1 class="display-4">Create new category</h1>
         </div>
     </div>
 

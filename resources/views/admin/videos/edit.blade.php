@@ -36,10 +36,25 @@
                 <input type ="text" class="form-control" id="description" name="description" value="{{$video['description']}}">
             </div>
 
+            <div class="div-create col-md-12 text-center">
+                <h2>Categories</h2>
+            </div>
             @foreach($categories as $category)
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="{{$category['id']}}" name="{{$category['id']}}">
                     <label class="custom-control-label" for="{{$category['id']}}">{{$category['name']}}</label>
+                </div>
+            @endforeach
+
+            <div class="div-create col-md-12 text-center">
+                <h2>Actors</h2>
+            </div>
+            @foreach($actors as $actor)
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="act_{{$actor['id']}}" name="act_{{$actor['id']}}" style="display:inline">
+                        <label class="custom-control-label" for="act_{{$actor['id']}}">{{$actor['first name']}} {{$actor['last_name']}}</label>
+                    </div>
                 </div>
             @endforeach
 

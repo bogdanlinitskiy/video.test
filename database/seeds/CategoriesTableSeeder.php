@@ -15,25 +15,25 @@ class CategoriesTableSeeder extends Seeder
             [
                 'name' => 'Animation',
                 'alias' => 'animation',
-                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2zgaSqH0bmTXIL_9QgtE8l_kyom-B0b0W7VpM0YSxtzKvQiB0',
+                'image' => '1535099057_adolf2.jpg',
                 'created_at' => date("Y-m-d H:i:s")
             ],
             [
                 'name' => 'Detective',
                 'alias' => 'detective',
-                'image' => 'https://thumbs.dreamstime.com/b/retro-detective-s-style-gumshoe-sleuth-conducting-surveillance-74038118.jpg',
+                'image' => '1535098945_0s0wYvH1lQ8.jpg',
                 'created_at' => date("Y-m-d H:i:s")
             ],
             [
                 'name' => 'Mystic',
                 'alias' => 'mystic',
-                'image' => 'https://static.spektrnews.in.ua/img/2016/01/221/22181_500xx_.jpg',
+                'image' => '1535099085_telkaptitsa.jpg',
                 'created_at' => date("Y-m-d H:i:s")
             ],
             [
                 'name' => 'Comedy',
                 'alias' => 'comedy',
-                'image' => 'http://image.kinoprofi.org/u/1425003507_b0c67b45cf.jpg',
+                'image' => '1535099057_adolf2.jpg',
                 'created_at' => date("Y-m-d H:i:s")
             ]
         ]);
