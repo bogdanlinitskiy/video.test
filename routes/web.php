@@ -19,6 +19,7 @@ Route::get('/home','HomeController@getVideos')->name('videos');
 Route::get('/','HomeController@index');
 Route::get('/admin','Admin\MainController@index');
 
+Route::post('/videos/{video}/comments','CommentsController@store');
 
 Route::resources([
     '/admin/categories' => 'Admin\CategoriesController',

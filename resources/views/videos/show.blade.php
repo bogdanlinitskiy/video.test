@@ -1,30 +1,33 @@
 @extends('template')
 
 @section('content')
-    <div class="col-md-4">
-        <div class="card mb-4 shadow-sm badge-dark">
-            <img class="card-img-top" src="/images/videos/{{$video['image']}}" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"  data-holder-rendered="true">
-            <div class="card-body">
-                <p class="card-text">Name: {{$video['name']}}</p>
-                <p class="card-text">Alias: {{$video['alias']}}</p>
-                <p class="card-text">Description: {{$video['description']}}</p>
-                <p class="card-text">Added: {{$video->time_ago(($video['date']))}} ago ({{$video['date']}})</p>
-                <p class="card-text">Views: {{$video['views']}}</p>
-                <p class="card-text">Likes: {{$video['likes']}}</p>
-                <p class="card-text">Dislikes: {{$video['dislikes']}}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/admin/videos/{{$video['alias']}}/edit">Edit</a></button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/admin/videos/{{$video['alias']}}/delete">Delete</a></button>
-                    </div>
-                    {{--<small class="text-muted">9 mins</small>--}}
-                </div>
-            </div>
-        </div>
+    <div class="col-md-12" align="center">
+        <video width="720" height="500" controls="controls" poster="/images/videos/{{$video['image']}}">
+            <source src="/videos/{{$video['video']}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' id="player">
+        </video>
     </div>
-    <video width="720" height="500" controls="controls" poster="video/duel.jpg">
-        <source src="/videos/{{$video['video']}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' id="player">
-    </video>
+
+    <div class ="col-md-12">
+        <ul class="list-group">
+            @foreach($video->comments as $comment)
+                @foreach($users as $user)
+                @if($user['id'] == $comment['user_id'])
+                <li class="list-group-item">{{$user['name'] ." : " . $comment->text}}</li>
+                @endif
+                    @endforeach
+            @endforeach
+        </ul>
+        @include('embed.errors')
+        @if(Auth::check())
+        <form action="/videos/{{$video['alias']}}/comments" class="form-horizontal" method="POST">
+            {{csrf_field()}}
+            <label for="comment">Write your comment:</label><br>
+            <textarea name="text" id="comment" class="form-control"></textarea><br>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+        @endif
+    </div>
+
     <script>
         var marker = true;
         function count() {

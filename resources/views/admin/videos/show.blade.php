@@ -21,10 +21,12 @@
                 </div>
             </div>
         </div>
+
     </div>
     <video width="720" height="500" controls="controls" poster="video/duel.jpg">
         <source src="/videos/{{$video['video']}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' id="player">
     </video>
+
     <script>
         var marker = true;
         function count() {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Video;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class VideosController extends Controller
 
     public function show(Video $video)
     {
-        return view('videos.show',compact('video'));
+        $users = User::all();
+        return view('videos.show',compact('video','users'));
     }
 
     public function popular()
